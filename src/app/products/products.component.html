@@ -1,0 +1,23 @@
+Filter: <input type="search" [(ngModel)]="prix">
+
+<div *ngFor="let product of listProdcuts, let i=index">
+
+  <div *ngIf="product.price<prix || prix==null" class="card" style="width:
+    18rem;">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">{{product.title }}</h5>
+      <h5>{{product.price}}</h5>
+      <button class="btn btn-primary" (click)="like(i)">Like</button>
+      <button class="btn btn-primary" (click)="buy(i)"
+        [disabled]="product.quantity==0">Buy</button>
+      <button class="btn btn-primary" (click)="edit(product.id)">Update</button>
+      <button class="btn btn-primary" (click)="delete(product.id)">delete</button>
+      <a [routerLink]="['/editProduct', product.id]"> Update</a>
+    </div>
+  </div>
+</div>
+
+<div>
+  <button class="primary" (click)="routage()">Go to Users</button>
+</div>
